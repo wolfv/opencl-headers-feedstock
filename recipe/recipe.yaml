@@ -24,17 +24,15 @@ requirements:
     - python *
 
 tests:
-  - script:
-      - if: win
-        then: if not exist %LIBRARY_INC%\\CL\\cl.h exit 1
-      - if: win
-        then: if not exist %LIBRARY_LIB%\\pkgconfig\\OpenCL-Headers.pc exit 1
-      - if: osx
-        then: test -f $PREFIX/include/OpenCL/cl.h
-      - if: unix
-        then: test -f $PREFIX/include/CL/cl.h
-      - if: unix
-        then: test -f $PREFIX/lib/pkgconfig/OpenCL-Headers.pc
+  - package_contents:
+      include:
+        - if: osx
+          then: OpenCL/cl.h
+          else: CL/cl.h
+      files:
+        - if: win
+          then: Library/lib/pkgconfig/OpenCL-Headers.pc
+          else: lib/pkgconfig/OpenCL-Headers.pc
 
 about:
   license: Apache-2.0
