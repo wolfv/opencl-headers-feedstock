@@ -26,9 +26,7 @@ requirements:
 tests:
   - package_contents:
       include:
-        - if: osx
-          then: OpenCL/cl.h
-          else: CL/cl.h
+        - CL/cl.h
       files:
         - if: win
           then: Library/lib/pkgconfig/OpenCL-Headers.pc
