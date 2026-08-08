@@ -7,11 +7,9 @@ if errorlevel 1 exit 1
 ninja install
 if errorlevel 1 exit 1
 
-if not "%CONDA_BUILD_CROSS_COMPILATION%"=="1" (
-    if not "%CONDA_BUILD_SKIP_TESTS%"=="1" (
-        ctest
-        if errorlevel 1 exit /b 1
-    )
+if not "%CONDA_BUILD_SKIP_TESTS%"=="1" (
+    ctest
+    if errorlevel 1 exit /b 1
 )
 
 mkdir %LIBRARY_PREFIX%\lib\pkgconfig
